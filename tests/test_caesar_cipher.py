@@ -7,21 +7,21 @@ def test_version():
 
 def test_encrypt():
     word = 'perfect'
-    key = 5
-    actual = encrypt(word,5)
-    expected = 'ujwkjhy'
+    key = 3
+    actual = encrypt(word,3)
+    expected = 'shuihfw'
     assert actual == expected
 
 def test_decrypt():
-    word = 'ujwkjhy'
-    key = 5
-    actual = decrypt(word,5)
+    word = 'shuihfw'
+    key = 3
+    actual = decrypt(word,3)
     expected = 'perfect'
     assert actual == expected
 
 
 def test_crack():
-    word ='ujwkjhy'
+    word ='shuihfw'
     actual = crack(word)
     expected = 'perfect'
     assert actual == expected
