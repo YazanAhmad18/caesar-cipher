@@ -57,17 +57,43 @@ def decrypt(decrypt_ciphertext, shifted):
     return decrypted_txt
 
 
-def crack(carck_ciphertext):
-    for i in range(26):
-        word_decrypted=decrypt(carck_ciphertext,i)
-        word=re.sub(r'[^A-Za-z]+','', word_decrypted)
-        if word.lower() in word_list or word in name_list:
-            return (word_decrypted)
 
-encrypted_smaple = encrypt('My Name is yazab ahmad. $ - % _ @ * # ^ underTest', 3)
-decrypted_smaple= decrypt(encrypted_smaple, 3)
-decrypted_smaple_without_the_key = crack(encrypted_smaple)
-print(encrypted_smaple)
-print(decrypted_smaple)
-print(decrypted_smaple_without_the_key)
+
+
+def count_words(text):
+    candidate_words = text.split()
+    word_count = 0 
+
+    for candidate in candidate_words:
+        word = re.sub(r'[^A-Za-z]+','', candidate)
+        if word.lower() in word_list or word in name_list:
+            word_count += 1
+    
+    return word_count
+
+def crack( encrypted ):
+    decrypt_word =''
+    
+    for key in range(26):
+        expected = decrypt(encrypted, key)
+        word_count = count_words(expected)
+        percentage = int(word_count / len(expected.split()) * 100)
+        if percentage > 50:
+            decrypt_word = expected
+
+    if not decrypt_word :
+        decrypt_word = "the text does not fit 50 percent"
+
+    return decrypt_word
+
+        
+
+
+if __name__=="__main__":
+    encrypted_smaple = encrypt('It was the best of times, it was the worst of times.', 3)
+    decrypted_smaple= decrypt(encrypted_smaple, 3)
+    decrypted_smaple_without_the_key = crack(encrypted_smaple)
+    print(encrypted_smaple)
+    print(decrypted_smaple)
+    print(decrypted_smaple_without_the_key)
 
