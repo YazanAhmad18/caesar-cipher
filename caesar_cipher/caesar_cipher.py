@@ -64,8 +64,8 @@ def crack(carck_ciphertext):
         if word.lower() in word_list or word in name_list:
             return (word_decrypted)
 
-encrypted_smaple = encrypt('good', 4)
-decrypted_smaple= decrypt(encrypted_smaple, 4)
+encrypted_smaple = encrypt('My Name is yazab ahmad. $ - % _ @ * # ^ underTest', 3)
+decrypted_smaple= decrypt(encrypted_smaple, 3)
 decrypted_smaple_without_the_key = crack(encrypted_smaple)
 print(encrypted_smaple)
 print(decrypted_smaple)
