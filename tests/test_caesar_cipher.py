@@ -27,7 +27,7 @@ def test_crack():
     assert actual == expected
 
 
-def test_encrypt():
+def test_encrypt1():
     plain_text = "My Name is yazab ahmad. $ - % _ @ * # ^ underTest"
     key = 3
     actual = encrypt( plain_text, key )
@@ -35,7 +35,7 @@ def test_encrypt():
     assert actual == expected
 
 
-def test_decrypt():
+def test_decrypt1():
     encrypted_text = "Pb Qdph lv bdcde dkpdg. $ - % _ @ * # ^ xqghuWhvw"
     key = 3
     actual = decrypt( encrypted_text, key )
